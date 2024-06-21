@@ -19,3 +19,30 @@ function App() {
         setError(error.message);
       }
     }
+
+    fetchPosts();
+  }, []);
+
+  return (
+    <div className="App">
+      <h1>Posts</h1>
+      {error ? (
+        <div className="error-message">
+          <img src={images} alt="" />
+        </div>
+      ) : (
+        <div className="post-list">
+          {posts.map(post => (
+            <div key={post.id} className="post">
+              <h2>{post.id}. {post.title}</h2>
+              <p>{post.body}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default App;
+
